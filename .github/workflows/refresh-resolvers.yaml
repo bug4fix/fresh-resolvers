@@ -43,7 +43,7 @@ jobs:
       - name: Commit changes
         run: |
           mv ~/resolvers.txt .
-          git config --local user.email "bot@barbersec.com"
+          git config --local user.email "bot@github.com"
           git config --local user.name "github-actions[bot]"
           git add resolvers.txt
           git commit -m "${NOW} update"
