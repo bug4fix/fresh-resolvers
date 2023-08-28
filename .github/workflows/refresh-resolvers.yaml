@@ -35,16 +35,15 @@ jobs:
         run: pip3 install contextvars
     
       - name: Generate new resolvers
-        run: dnsvalidator -tL https://gist.githubusercontent.com/bug4fix/238dbe81cf8354a40ff80147bef7170b/raw/c8aa39de03d3b800ab21ca73a2cbd5784821aa6e/nameservers.txt -threads 40 --silent -o ~/resolvers.txt
+        run: dnsvalidator -tL https://gist.githubusercontent.com/bug4fix/238dbe81cf8354a40ff80147bef7170b/raw/c8aa39de03d3b800ab21ca73a2cbd5784821aa6e/nameservers.txt -threads 40 --silent > resolvers.txt
     
       - name: Set current date
         run: echo "NOW=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
       
       - name: Commit changes
         run: |
-          mv ~/resolvers.txt .
           git config --local user.email "bot@github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.name "[bot] github-actions"
           git add resolvers.txt
           git commit -m "${NOW} update"
     
