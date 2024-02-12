@@ -20,6 +20,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install importlib-metadata
+        run: pip3 install importlib-metadata
+
       - name: Checkout DNS Validator
         uses: actions/checkout@v2
         with:
