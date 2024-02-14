@@ -20,9 +20,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install importlib-metadata
-        run: pip3 install importlib-metadata
-
       - name: Checkout DNS Validator
         uses: actions/checkout@v2
         with:
@@ -36,6 +33,9 @@ jobs:
       
       - name: Install contextvars
         run: pip3 install contextvars
+
+      - name: Install importlib-metadata
+        run: pip3 install importlib-metadata
     
       - name: Generate new resolvers
         run: dnsvalidator -tL https://gist.githubusercontent.com/bug4fix/238dbe81cf8354a40ff80147bef7170b/raw/c8aa39de03d3b800ab21ca73a2cbd5784821aa6e/nameservers.txt -threads 40 --silent > resolvers.txt
